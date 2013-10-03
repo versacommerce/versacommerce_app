@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     
   def destroy
     session[:versacommerce] = nil
-    flash[:success]         = "Successfully logged out."
+    flash[:success]         = t('sessions.controller.destroy')
     redirect_to :action => 'new'
   end
   
@@ -34,10 +34,10 @@ class SessionsController < ApplicationController
       # https://github.com/versacommerce/versacommerce_api (see sample code)
       #
       session[:versacommerce] = current_session
-      flash[:success]         = "Connection established to: #{params[:shop]}"
+      flash[:success]         = t('sessions.controller.finalize_ok')
       redirect_to return_address
     else
-      flash[:warning] = "Connection failed."
+      flash[:warning] = t('sessions.controller.finalize_error')
       redirect_to :action => 'index'
     end
   end

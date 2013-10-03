@@ -1,15 +1,15 @@
 <div class="page-header" id="login-header">
   <%= image_tag 'versacommerce-100.png', class: "pull-right", style: "opacity:.55" %>
-  <h1>Register this app with your shop.</h1>
-  <h1><small>This app requires you to login to start using it.</small></h1>
+  <h1><%= t('sessions.views.new.title') %></h1>
+  <h1><small><%= t('sessions.views.new.subtitle') %></small></h1>
 </div>
 
 <div>
   <%= form_tag login_path, :class => 'form-inline' do %>
-    <span class="help-block">Please enter the shop url. Example: myshop.versacommerce.de</span>
+    <span class="help-block"><%= t('sessions.views.new.help') %></span>
     <div class="form-group">
-      <%= text_field_tag 'shop', nil, size: 40, :placeholder => 'myshop.versacommerce.de', :class => 'form-control' %>
+      <%= text_field_tag 'shop', nil, size: 40, placeholder: t('sessions.views.new.placeholder'), class: 'form-control' %>
     </div>
-    <%= submit_tag 'Install / Register', :class => 'btn btn-primary btn-large' %>
+    <%= submit_tag t('sessions.views.new.submit'), :class => 'btn btn-primary btn-large' %>
   <% end %>
 </div>

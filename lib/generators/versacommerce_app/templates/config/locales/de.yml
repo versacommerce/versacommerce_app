@@ -1,0 +1,30 @@
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+de:
+  sessions:
+    views:
+      new:
+        title: "Registrieren Sie diese Anwendung bei Ihrem Shop."
+        subtitle: "Sie müssen Sich bei ihrem Shop anmelden, um dieser Anwendung Zugriff zu gewähren."
+        help: "Bitte geben Sie Ihre Shop-URL ein. Beispiel: mein-shop.versacommerce.de"
+        placeholder: "mein-shop.versacommerce.de"
+        submit: "Registrieren (Installieren)"
+    controller:
+      destroy: "Sie sind nun abgemeldet."
+      finalize_ok: "Verbindung wurde erfolgreich aufgebaut."
+      finalize_error: "Verbindung konnte nicht aufgebaut werden."

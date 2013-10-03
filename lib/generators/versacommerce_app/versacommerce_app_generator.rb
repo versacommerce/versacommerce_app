@@ -50,6 +50,15 @@ production:
       route_without_newline "controller :sessions do"
     end
   end
+
+  def add_config_locale    
+    inject_into_file 'config/application.rb', <<-DATA, :after => "class Application < Rails::Application\n"
+    
+    # Configure the default encoding used in templates for Ruby 1.9.
+    config.encoding = "utf-8"
+    config.time_zone = 'Berlin'
+    DATA
+  end
   
   def show_readme
     `bundle install`
