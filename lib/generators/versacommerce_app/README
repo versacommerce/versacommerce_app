@@ -1,0 +1,15 @@
+
+What's next?
+------------
+
+Start your application with:
+
+  $ rails server
+
+Now visit http://localhost:3000 and register (install) your application with a VersaCommerce store.
+
+After your application has been given read or read/write API permission by the
+shop, you're ready to start experimenting with the VersaCommerce API.
+
+
+API Reference     https://github.com/versacommerce/vc-api

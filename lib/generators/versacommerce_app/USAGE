@@ -1,0 +1,21 @@
+Description:
+    This is a generator for creating a basic VersaCommerce application to quickly get
+    you started. You can see some examples on how to use the VersaCommerce API.
+    
+    The generator creates a basic sessions controller for authenticating with your
+    Shop and a controller called "home" which displays basic information 
+    about your products, orders and articles.
+    
+    Note: It's recommended to use this on a new Rails project, so that the 
+          generator won't overwrite/delete some of your files.
+
+Usage:
+    Pass your API key and then your Secret, which the sessions controller 
+    will need to authenticate with your shop. 
+    If you don't have an API key yet, register your application with us.
+
+    
+Examples:
+    rails/generate versacommerce_app aabbccddeee112233445566 ppooiikkkhh99887...
+        
+    This will create a sessions controller and a home controller and views.

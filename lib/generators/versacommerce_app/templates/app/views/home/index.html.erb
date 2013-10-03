@@ -1,0 +1,161 @@
+<div class="page-header">
+  <h1>How does this work?</h1>
+</div>
+<p class="lead">
+  This is the VersaCommerce App Template build on <a href="http://getbootstrap.com" target="_blank">Bootstrap 3</a>.
+  To get the ball rolling: It uses the <a href="https://github.com/versacommerce/versacommerce_api" target="_blank">VersaCommerce API GEM</a> for accessing the VersaCommerce admin REST web services. It is build with the <a href="https://github.com/versacommerce/versacommerce_app" target="_blank">versacommerce_app generator</a> which provides a <a href="https://github.com/versacommerce/versacommerce_app/blob/master/lib/versacommerce_app/ensure_api_session.rb" target="_blank">module</a> to ensure the API-Session.
+</p>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Check out the code</h3>
+  </div>
+  <div class="panel-body">
+    <p>
+      <p><strong>Check out the</strong> <code>home_controller</code></p>
+      <p>The controller in this demo application fetches the newest 5 orders and products and makes them available as instance variables <code>@orders</code> and <code>@products</code></p>
+    </p>
+    <p>
+      <p><strong>Take a look at</strong> <code>index.html.erb</code></p>
+      <p>Index is the Ruby template you are currently viewing. Have a look at the markup and Ruby code to see how the VersaCommerce API is being used. It's located at <code>views/home/index.html.erb</code></p>
+    </p>
+    <p>
+      <p><strong>Check out the</strong> <code>sessions_controller</code></p>
+      <p>The sessions-controller in this demo application makes sure, you are connected to a VersaCommerce Shop. If not, it asks you to register (install) your app with a shop. After authorisation it calls the action <code>sessions#finalize</code>. If you want to store the &quot;registration-token&quot; <code>token</code> for unattended usage, you can place your code right here.</p>
+    </p>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Additional Documentation</h3>
+  </div>
+  <div class="panel-body">
+    <p>
+      <%= link_to 'API documentation', 'https://github.com/versacommerce/vc-api' %><br/>
+      <span class="note">Learn what you can do with the VersaCommerce API</span>
+    </p>
+    <p>
+      <%= link_to 'Bootstrap documentation', 'http://twitter.github.com/bootstrap/' %><br/>
+      <span class="note">Find out what you can do with Twitter Bootstrap</span>
+    </p>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">About this Shop</h3>
+  </div>
+  <div class="panel-body">
+    <p>
+      <p><strong>Name</strong></p>
+      <p><%= current_shop.shop.name %></p>
+    </p>
+    <p>
+      <p><strong>URL</strong></p>
+      <p><%= current_shop.shop.url %></p>
+    </p>
+    <p>
+      <p><strong>Price includes tax</strong></p>
+      <p><%= current_shop.shop.price_includes_tax%></p>
+    </p>
+    <p>
+      <p><strong>Currency</strong></p>
+      <p><%= current_shop.shop.currency_code%></p>
+    </p>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Recent Orders</h3>
+  </div>
+  <div class="panel-body">
+
+    <% if @orders.blank? %>
+      <table class="table table-striped">
+        <tr>
+          <td><em>There are no orders in your shop.</em></td>
+        </tr>
+      </table>
+    <% else %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Order</th>
+            <th>Customer</th>
+            <th>Status</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= link_to order.code, "https://#{current_shop.url}/admin/orders/#{order.id}", :target => 'blank' %></td>
+          <td><%= "#{order.billing_address.firstname} #{order.billing_address.lastname}" %></td>
+          <td>
+            <%= order.status %>
+          </td>
+          <td><%= order.total %> <%= order.currency %></td>
+        </tr>
+      <% end %>
+      </table>
+    <% end %>
+
+  </div>
+</div>
+
+
+<h4>New Products</h4>
+  
+<% if @products.blank? %>
+
+  <div class="panel-group">
+    <div class="panel-heading">
+      <em>There are no products in your shop.</em>
+    </div>
+  </div>
+
+<% else %>
+
+  <div class="accordion" id="accordion">      
+    <div class="panel-group">
+
+      <%  @products.each_with_index do |product, index| %>
+        <div class="panel panel-default">
+
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= product.id %>">
+                <%= product.title %>
+              </a>
+              <span class="pull-right muted"><%= product.price %> <%= current_shop.shop.currency_code %></span>
+            </h4>
+          </div>
+  
+          <div id="collapse<%= product.id %>" class="panel-body collapse <% if index == 0 %>in<% end %>">
+            <div class="panel-body">
+              <%= image_tag( product.featured_image.medium, class: "pull-right" ) unless product.featured_image_url.blank? %>                
+              <p><strong>SKU:</strong> <%= product.code %></p>
+              <p><strong>Category:</strong> <%= product.category %></p>
+              <p><strong>Vendor:</strong> <%= product.vendor %></p>
+              <%= raw(product.description_html) %>
+              <br/>
+              <p class="muted">Created at <%= product.created_on.strftime("%Y-%m-%d") %></p>
+              <br/>
+              <%= link_to "Open this product in /admin", "http://#{current_shop.url}/admin/catalog/products/#{product.id}/edit", :target => 'blank', class: "btn btn-default" %>
+            </div>
+          </div>
+
+        </div>
+      <% end %>
+
+    </div>
+
+  </div>
+<% end %>
+
+<br/><br/>
