@@ -25,6 +25,6 @@ de:
         placeholder: "mein-shop.versacommerce.de"
         submit: "Registrieren (Installieren)"
     controller:
-      destroy: "Sie sind nun abgemeldet."
+      destroy: "Sie haben sich abgemeldet."
       finalize_ok: "Verbindung wurde erfolgreich aufgebaut."
       finalize_error: "Verbindung konnte nicht aufgebaut werden."

@@ -1,4 +1,4 @@
 # -*- encoding : utf-8 -*-
 module VersacommerceApp
-  VERSION = "1.0.23"
+  VERSION = "1.0.24"
 end
