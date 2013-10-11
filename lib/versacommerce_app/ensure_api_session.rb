@@ -27,7 +27,7 @@ module VersacommerceApp::EnsureApiSession
   protected
   
   def close_session
-    session[versacommerce] = nil
+    session[:versacommerce] = nil
     redirect_to login_path
   end
 end
