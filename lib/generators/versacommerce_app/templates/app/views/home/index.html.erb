@@ -94,7 +94,7 @@
         </thead>
       <% @orders.each do |order| %>
         <tr>
-          <td><%= link_to order.code, "https://#{current_shop.url}/admin/orders/#{order.id}", :target => 'blank' %></td>
+          <td><%= link_to order.code, "http://#{current_shop.url}/admin/sales/orders/#{order.id}", :target => 'blank' %></td>
           <td><%= "#{order.billing_address.firstname} #{order.billing_address.lastname}" %></td>
           <td>
             <%= order.status %>
