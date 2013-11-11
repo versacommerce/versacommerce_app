@@ -19,4 +19,10 @@ class ApplicationController < ActionController::Base
     Rails.application.routes.default_url_options[:locale]= I18n.locale 
   end
 
+  # prepare variable for the views
+  def set_installed_shops
+    @installed_shops = session[:installed_shops]
+  end
+
+
 end

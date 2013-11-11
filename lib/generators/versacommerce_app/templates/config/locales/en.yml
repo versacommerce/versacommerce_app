@@ -22,6 +22,7 @@
 en:
   sessions:
     views:
+      switch_shop: 'Switch shop'
       new:
         title: "Register this app with your shop."
         subtitle: "This app requires you to login to start using it."

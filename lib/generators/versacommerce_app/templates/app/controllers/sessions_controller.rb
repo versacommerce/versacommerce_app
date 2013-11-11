@@ -34,6 +34,10 @@ class SessionsController < ApplicationController
       # https://github.com/versacommerce/versacommerce_api (see sample code)
       #
       session[:versacommerce] = current_session
+
+      # save current shop to array in session, to allow switching between shops
+      save_installed_shop
+
       flash[:success]         = t('sessions.controller.finalize_ok')
       redirect_to return_address
     else
@@ -64,5 +68,14 @@ class SessionsController < ApplicationController
     u = URI("http://#{name}")
     u.host.ends_with?("versacommerce.de") ? u.host : nil
   end
+
+
+  def save_installed_shop
+    session[:installed_shops] ||= []
+    unless session[:installed_shops].include?(current_shop.url)
+      session[:installed_shops].push(current_shop.url)
+    end
+  end
+
 
 end
