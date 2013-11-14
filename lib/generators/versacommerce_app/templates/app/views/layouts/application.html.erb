@@ -63,7 +63,28 @@
       code {
         font-size: 80%;
       }
+
+      .dropdown-menu>li>a.switch-shop-current {
+        font-weight: bold;
+        cursor: default;
+      }
     </style>
+
+    <script type="text/javascript">
+
+      $(function() {
+        return $('a.switch-shop').on('click', function(e) {
+          var shop_url;
+          e.preventDefault();
+          shop_url = $(e.target).prop('rel');
+          if (shop_url) {
+            return window.location = '/login/?shop=' + shop_name;
+          }
+        });
+      });
+
+    </script>
+
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -103,6 +124,23 @@
                 </ul>
               </li>
             </ul>
+
+            <!-- switch between shops, change event handled by js -->
+            <%- unless @installed_shops.empty? %>
+            <ul class="nav navbar-nav pull-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('sessions.views.switch_shop') %> <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <%- @installed_shops.each do |shop| %>
+                    <li><%= link_to shop.split('.').first.titleize, 'javascript:void(0);', class: (current_shop.url == shop ? 'switch-shop-current' : 'switch-shop'), rel: (current_shop.url == shop ? nil : shop)%></li>
+                  <%- end %>
+                  <li><%= link_to t('layout.add_new_shop'), login_path %></li>
+                </ul>
+              </li>
+            </ul>
+            <%- end %>
+            <!-- end of shops switch -->
+
           </div><!--/.nav-collapse -->
           <% end %>
         </div>
