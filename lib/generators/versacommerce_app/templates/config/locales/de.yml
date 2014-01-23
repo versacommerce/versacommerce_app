@@ -16,6 +16,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 de:
+  app_title: "VersaCommerce Example App"
+  created_by_html: "Erstellt von %{link}"
   sessions:
     views:
       new:

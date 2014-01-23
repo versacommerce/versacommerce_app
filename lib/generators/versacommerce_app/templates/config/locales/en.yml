@@ -20,6 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  app_title: "VersaCommerce Example App"
+  created_by_html: "Created by %{link}"
   sessions:
     views:
       switch_shop: 'Switch shop'
