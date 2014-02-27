@@ -57,6 +57,9 @@ production:
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
     config.time_zone = 'Berlin'
+    
+    # Allow all origins to include this app via <frame> or <iframe>.
+    config.action_dispatch.default_headers = { 'X-Frame-Options' => 'ALLOWALL' }
     DATA
   end
   
