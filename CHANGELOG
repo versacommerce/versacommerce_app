@@ -1,2 +1,3 @@
-1.0.5 
-1.0.0 initial version [dorra]
+1.0.27 - Ensure that current session is bound to current shop, if shop param is given.
+       - Updated 'versacommerce_api' to '1.0.8'
+1.0.0 - initial version [dorra]
