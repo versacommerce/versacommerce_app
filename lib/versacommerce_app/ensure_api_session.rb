@@ -7,6 +7,8 @@ module VersacommerceApp::EnsureApiSession
   end
   
   def ensure_current_api_session
+    session[:versacommerce] = nil if params[:shop].present? && current_shop && current_shop.url != params[:shop]
+    
     if session[:versacommerce]
       begin
         VersacommerceAPI::Base.activate_session(session[:versacommerce])
