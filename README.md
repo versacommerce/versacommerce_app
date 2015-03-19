@@ -1,10 +1,10 @@
 # VersaCommerce App Generator
 
-VersaCommerce application generator for Rails 3.1 and Rails 4.0
+VersaCommerce application generator for Rails 3.x and Rails 4.x
 
 ## Description
 
-This gem makes it easy to get a Rails 3.1 or Rails 4.0 app up and running with the VersaCommerce API.
+This gem makes it easy to get a Rails 3.x or Rails 4.x app up and running with the VersaCommerce API.
 
 The generator creates a basic SessionsController for authenticating with your shop and a HomeController which displays basic information about your products, orders and the shop itself.
 
