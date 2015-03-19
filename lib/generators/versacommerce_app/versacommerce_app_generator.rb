@@ -6,7 +6,17 @@ class VersacommerceAppGenerator < Rails::Generators::Base
   argument :secret, :type => :string, :required => false
   
   class_option :skip_routes, :type => :boolean, :default => false, :desc => 'pass true to skip route generation'
-  
+
+  def create_initializer_file
+    if Gem::Requirement.new('>= 4.1').satisfied_by? Gem::Version.new(::Rails::VERSION::STRING)
+      create_file "config/initializers/cookies_serializer.rb", <<-DATA
+# Be sure to restart your server when you modify this file.
+
+Rails.application.config.action_dispatch.cookies_serializer = :marshal
+DATA
+    end
+  end
+
   def self.source_root
     File.join(File.dirname(__FILE__), 'templates')
   end
