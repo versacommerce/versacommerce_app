@@ -1,3 +1,5 @@
+1.0.28 - Set 'Rails.application.config.action_dispatch.cookies_serializer' to ':marshal' if Rails version >= 4.1.0
+       - Improved the README
 1.0.27 - Ensure that current session is bound to current shop, if shop param is given.
        - Updated 'versacommerce_api' to '1.0.8'
 1.0.0 - initial version [dorra]
