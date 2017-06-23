@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.summary     = %q{This gem is used to get quickly started with the VersaCommerce API}
   s.description = %q{This generator creates a basic sessions controller for authenticating with your Shop. Also a home controller which lets you access your shop easily.}
 
-  s.add_runtime_dependency('rails', '>= 3.1', '< 5.1')
+  s.add_runtime_dependency('rails', '>= 3.1')
   s.add_runtime_dependency('versacommerce_api', '~> 1.0.14')
 
   s.files         = `git ls-files`.split("\n")
