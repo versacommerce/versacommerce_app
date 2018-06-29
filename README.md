@@ -63,6 +63,9 @@ development:
   api_key: your api key
   secret: your secret
 ```
+* You have to add the After Install Url as 'http://your-app/finalize' by logging into your developer account.
+
+* Don't forget to add api_key and secret in your production environment.
 
 ## Next...
 
@@ -73,5 +76,7 @@ $ rails server
 ```
 
 Now visit http://localhost:3000 and register (install) your application with a VersaCommerce store. Even if Rails tells you to visit your app at http://0.0.0.0:3000, go to http://localhost:3000.
+
+
 
 After your application has been given whatever API permissions, you're ready to start experimenting with the VersaCommerce API. Have Fun :)
