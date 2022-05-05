@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.description = %q{This generator creates a basic sessions controller for authenticating with your Shop. Also a home controller which lets you access your shop easily.}
 
   s.add_runtime_dependency('rails', '>= 3.1')
-  s.add_runtime_dependency('versacommerce_api', '~> 1.0.14')
+  s.add_runtime_dependency('versacommerce_api', '~> 2.0')
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
