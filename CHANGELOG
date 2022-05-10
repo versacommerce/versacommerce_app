@@ -1,3 +1,4 @@
+1.2.0  - Update 'versacommerce_api' to '2.0'
 1.1.0  - Update 'versacommerce_api' to '1.0.14'
        - Add support for Rails 5.0.x
 1.0.28 - Set 'Rails.application.config.action_dispatch.cookies_serializer' to ':marshal' if Rails version >= 4.1.0
