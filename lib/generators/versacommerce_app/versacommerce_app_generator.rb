@@ -4,7 +4,7 @@ require 'rails/generators'
 class VersacommerceAppGenerator < Rails::Generators::Base
   argument :api_key, :type => :string, :required => false
   argument :secret, :type => :string, :required => false
-  
+
   class_option :skip_routes, :type => :boolean, :default => false, :desc => 'pass true to skip route generation'
 
   def create_initializer_file
@@ -12,6 +12,8 @@ class VersacommerceAppGenerator < Rails::Generators::Base
       create_file "config/initializers/cookies_serializer.rb", <<-DATA
 # Be sure to restart your server when you modify this file.
 
+# Specify a serializer for the signed and encrypted cookie jars.
+# Valid options are :json, :marshal, and :hybrid.
 Rails.application.config.action_dispatch.cookies_serializer = :marshal
 DATA
     end
@@ -20,20 +22,20 @@ DATA
   def self.source_root
     File.join(File.dirname(__FILE__), 'templates')
   end
-  
+
   def copy_files
     directory 'app'
     directory 'public'
     directory 'config'
   end
-  
+
   def remove_static_index
     remove_file 'public/index.html'
   end
-  
+
   def add_config_variables
     return if api_key.blank? || secret.blank?
-    
+
     append_file 'config/versacommerce_api.yml', <<-DATA
 development:
   api_key: #{api_key}
@@ -48,7 +50,7 @@ production:
   secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     DATA
   end
-  
+
   def add_routes
     unless options[:skip_routes]
       route_without_newline "root :to => 'home#index'"
@@ -61,7 +63,7 @@ production:
     end
   end
 
-  def add_config_locale    
+  def add_config_locale
     inject_into_file 'config/application.rb', <<-DATA, :after => "class Application < Rails::Application\n"
     
     # Configure the default encoding used in templates for Ruby 1.9.
@@ -72,16 +74,16 @@ production:
     config.action_dispatch.default_headers = { 'X-Frame-Options' => 'ALLOWALL' }
     DATA
   end
-  
+
   def show_readme
     `bundle install`
     readme '../README'
   end
-  
+
   private
-  
+
   def route_without_newline(routing_code)
     sentinel = /\.routes\.draw do(?:\s*\|map\|)?\s*$/
     inject_into_file 'config/routes.rb', "\n  #{routing_code}", { after: sentinel, verbose: false }
-  end  
+  end
 end

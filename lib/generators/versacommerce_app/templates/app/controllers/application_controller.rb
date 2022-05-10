@@ -24,5 +24,4 @@ class ApplicationController < ActionController::Base
     @installed_shops = session[:installed_shops]
   end
 
-
 end
