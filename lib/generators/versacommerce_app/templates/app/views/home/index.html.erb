@@ -34,7 +34,7 @@
   </div>
   <div class="panel-body">
     <p>
-      <%= link_to 'API documentation', 'https://github.com/versacommerce/vc-api' %><br/>
+      <%= link_to 'API documentation', 'https://github.com/versacommerce/versacommerce_api' %><br/>
       <span class="note">Learn what you can do with the VersaCommerce API</span>
     </p>
     <p>
@@ -110,7 +110,7 @@
 
 
 <h4>New Products</h4>
-  
+
 <% if @products.blank? %>
 
   <div class="panel-group">
@@ -121,7 +121,7 @@
 
 <% else %>
 
-  <div class="accordion" id="accordion">      
+  <div class="accordion" id="accordion">
     <div class="panel-group">
 
       <%  @products.each_with_index do |product, index| %>
@@ -135,10 +135,10 @@
               <span class="pull-right muted"><%= product.price %> <%= current_shop.shop.currency_code %></span>
             </h4>
           </div>
-  
+
           <div id="collapse<%= product.id %>" class="panel-body collapse <% if index == 0 %>in<% end %>">
             <div class="panel-body">
-              <%= image_tag( product.featured_image.medium, class: "pull-right" ) unless product.featured_image_url.blank? %>                
+              <%= image_tag( product.featured_image.medium, class: "pull-right" ) unless product.featured_image_url.blank? %>
               <p><strong>SKU:</strong> <%= product.code %></p>
               <p><strong>Category:</strong> <%= product.category %></p>
               <p><strong>Vendor:</strong> <%= product.vendor %></p>
