@@ -1,15 +1,19 @@
 <div class="page-header" id="login-header">
-  <%= image_tag 'versacommerce-100.png', class: "pull-right", style: "opacity:.55" %>
+  <%= image_tag 'versacommerce-100.png', class: "float-end", style: "opacity:.55" %>
   <h1><%= t('sessions.views.new.title') %></h1>
-  <h1><small><%= t('sessions.views.new.subtitle') %></small></h1>
+  <h4>
+    <div class="mt-4 text-secondary">
+      <%= t('sessions.views.new.subtitle') %>
+    </div>
+  </h4>
 </div>
 
 <div>
-  <%= form_tag login_path, :class => 'form-inline' do %>
-    <span class="help-block"><%= t('sessions.views.new.help') %></span>
-    <div class="form-group">
+  <%= form_tag login_path, class: 'form-inline' do %>
+    <span class="form-text"><%= t('sessions.views.new.help') %></span>
+    <div class="shop-input">
       <%= text_field_tag 'shop', nil, size: 40, placeholder: t('sessions.views.new.placeholder'), class: 'form-control' %>
+      <%= submit_tag t('sessions.views.new.submit'), :class => 'btn btn-primary btn-large' %>
     </div>
-    <%= submit_tag t('sessions.views.new.submit'), :class => 'btn btn-primary btn-large' %>
   <% end %>
 </div>
