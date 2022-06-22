@@ -14,8 +14,8 @@ The generator creates a basic SessionsController for authenticating with your sh
 
 To use the VersaCommerce API you will need an application registration for your store.
 
-1. SignUp as an developer: http://app.versacommerce.de/developer/signup
-2. Login to your developer account: http://app.versacommerce.de/developer
+1. SignUp as a partner: https://app.versacommerce.de/partner/signup
+2. Login to your partner account: https://app.versacommerce.de/partner
 3. Register your app.
 
 
