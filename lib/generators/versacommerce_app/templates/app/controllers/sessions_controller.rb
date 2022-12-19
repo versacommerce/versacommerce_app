@@ -50,7 +50,7 @@ class SessionsController < ApplicationController
   
   def authenticate
     if shop_name = sanitize_shop_param(params)
-      redirect_to VersacommerceAPI::Session.new(shop_name).create_permission_url
+      redirect_to(VersacommerceAPI::Session.new(shop_name).create_permission_url, allow_other_host: true)
     else
       redirect_to return_address
     end
