@@ -153,20 +153,20 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
                   <%= link_to "http://#{current_shop.url}", target: 'blank', class: 'dropdown-item' do %>
-                    <%= image_tag 'shop' %>
+                    <%= image_tag 'shop.svg' %>
                     <span>Shop</span>
                   <% end %>
                 </li>
                 <li>
                   <%= link_to "http://#{current_shop.url}/admin", target: 'blank', class: 'dropdown-item' do %>
-                    <%= image_tag 'gear' %>
+                    <%= image_tag 'gear.svg' %>
                     <span>Admin</span>
                   <% end %>
                 </li>
                 <li class="dropdown-divider"></li>
                 <li>
                   <%= button_to logout_path, method: :delete, class: 'dropdown-item' do %>
-                    <%= image_tag 'logout' %>
+                    <%= image_tag 'logout.svg' %>
                     <span>Logout</span>
                   <% end %>
                 </li>
